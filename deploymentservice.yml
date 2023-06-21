@@ -4,7 +4,7 @@ data:
   username: shubham
   password: mypassword123
 metadata:
-  name: mysecret
+  name: testsecret
 ---
 apiVersion: v1
 data:

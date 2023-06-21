@@ -1,12 +1,4 @@
 apiVersion: v1
-kind: Secret
-data:
-  username: shubham
-  password: mypassword123
-metadata:
-  name: testsecret
----
-apiVersion: v1
 data:
   shubham.conf: |
     This is my configuration file for Node_app
@@ -37,9 +29,7 @@ spec:
         - containerPort: 3000
         volumeMounts:
           - name: testconfigmap
-            mountPath: "/tmp/config" 
-          - name: testsecret
-            mountPath: "/tmp/mysecrets"  
+            mountPath: "/tmp/config"   
       volumes:
       - name: testconfigmap
         configMap:
@@ -47,9 +37,7 @@ spec:
           items:
           - key: shubham.conf
             path: shubham.conf
-      - name: testsecret
-        secret:
-          secretName: mysecret      
+          
         
         
 ---

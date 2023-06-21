@@ -6,6 +6,15 @@ kind: ConfigMap
 metadata:
   name: confmap-sk
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm  
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -29,7 +38,9 @@ spec:
         - containerPort: 3000
         volumeMounts:
           - name: testconfigmap
-            mountPath: "/tmp/config"   
+            mountPath: "/tmp/config"
+          - name: testsecret
+              mountPath: /tmp/mysecrets  
       volumes:
       - name: testconfigmap
         configMap:
@@ -37,6 +48,10 @@ spec:
           items:
           - key: shubham.conf
             path: shubham.conf
+      - name: testsecret
+          secret:
+            secretName: mysecret
+      
           
         
         

@@ -1,15 +1,15 @@
 apiVersion: v1
 data:
-  shubham.conf: |
+  shubham1.conf: |
     This is my configuration file !!!!
 kind: ConfigMap
 metadata:
-  name: confmap-sk
+  name: confmap-sk-1
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysecret
+  name: mysecret-1
 type: Opaque
 data:
   username: YWRtaW4=
@@ -18,7 +18,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp-deployment-sk-1
+  name: nodeapp-deployment-sk-final
   labels:
     app: nodeapp
 spec:
@@ -44,13 +44,13 @@ spec:
       volumes:
       - name: testconfigmap
         configMap:
-          name: confmap-sk   
+          name: confmap-sk-1   
           items:
-          - key: shubham.conf
-            path: shubham.conf
+          - key: shubham1.conf
+            path: shubham1.conf
       - name: testsecret
           secret:
-            secretName: mysecret
+            secretName: mysecret-1
       
           
         
@@ -60,7 +60,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: nodeapp-service-final
 spec:
   selector:
     app: nodeapp 
@@ -69,4 +69,4 @@ spec:
   - protocol: TCP
     port: 5000
     targetPort: 3000
-    nodePort: 31111
+    nodePort: 31113

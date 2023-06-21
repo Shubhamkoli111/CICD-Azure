@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   shubham.conf: |
-    This is my configuration file for Node_app
+    This is my configuration file !!!!
 kind: ConfigMap
 metadata:
   name: confmap-sk

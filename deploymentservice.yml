@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Secret
 data:
-  username: shubham
-  password: mypassword123
+  username.txt: shubham
+  password.txt: mypassword123
 metadata:
   name: mysecret
 ---
-
 apiVersion: v1
 data:
   shubham.conf: |

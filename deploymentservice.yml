@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Secret
 data:
-  username.txt: shubham
-  password.txt: mypassword123
+  username: shubham
+  password: mypassword123
 metadata:
   name: mysecret
 ---

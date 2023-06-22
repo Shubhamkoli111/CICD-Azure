@@ -1,27 +1,27 @@
 ---
 apiVersion: v1
 data:
-  shubham1.conf: |
-    This is my configuration file !!!!
+  shubham2.conf: |
+    ___This__is__my__configuration__file--shubham--- !!!!
 kind: ConfigMap
 metadata:
-  name: confmap-sk-1
+  name: confmap-sk-az
 
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysecret-1
+  name: mysecret-sk-az
 type: Opaque
 data:
-  username: YWRtaW4=
-  password: MWYyZDFlMmU2N2Rm
+  username: c2h1YmhhbQ==
+  password: c2h1YmhhbUAxMjM=
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp-deployment-sk-azure
+  name: nodeapp-deployment-sk-azure-confSec
   labels:
     app: nodeapp
 spec:
@@ -47,19 +47,19 @@ spec:
       volumes:
         - name: testconfigmap
           configMap:
-            name: confmap-sk-1
+            name: confmap-sk-az
             items:
-              - key: shubham1.conf
-                path: shubham1.conf
+              - key: shubham2.conf
+                path: shubham2.conf
         - name: testsecret
           secret:
-            secretName: mysecret-1
+            secretName: mysecret-sk-az
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service-azure-sk
+  name: nodeapp-service-azure-sk-confSec
 spec:
   selector:
     app: nodeapp
@@ -68,4 +68,4 @@ spec:
     - protocol: TCP
       port: 5000
       targetPort: 3000
-      nodePort: 31147
+      nodePort: 31142

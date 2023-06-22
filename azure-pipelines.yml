@@ -6,8 +6,9 @@ variables:
   imageName: 'shubham1911/nodeapp'
 steps:
   - task: Docker@2
-    displayName: Build an image
+    displayName: Build and push an image
     inputs:
       repository: $(imageName)
-      command: build
+      command: buildAndPush
       Dockerfile: dockerfile
+      containerRegistry: dockerhub

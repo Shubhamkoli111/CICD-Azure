@@ -21,7 +21,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp-deployment-sk-azure-confSec
+  name: nodeapp-deployment-sk-azure-confsec
   labels:
     app: nodeapp
 spec:

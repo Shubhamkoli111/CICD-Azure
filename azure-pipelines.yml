@@ -12,3 +12,9 @@ steps:
       command: buildAndPush
       Dockerfile: dockerfile
       containerRegistry: dockerhub
+  - task: KubernetesCLI@1
+    displayName: 'Install kubectl'
+    inputs:
+      versionSpec: 'latest'
+      checkLatest: true
+    

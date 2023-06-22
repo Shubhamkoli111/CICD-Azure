@@ -3,7 +3,7 @@ trigger:
   - main
 pool: selfHosted-sk
 variables:
-  imageName: 'thetips4you/nodeapp:latest'
+  imageName: 'https://github.com/Shubhamkoli111/conf-sec-NEW'
 steps:
   - task: Docker@2
     displayName: Build an image

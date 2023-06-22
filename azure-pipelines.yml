@@ -15,7 +15,7 @@ steps:
   - task: DownloadPipelineArtifact@2
     displayName: 'Download Kubernetes manifest file'
     inputs:
-       artifact: 'deploymentservice.yaml'  # Specify the name of the artifact containing the manifest file
+       artifact: 'deploymentservice.yml'  # Specify the name of the artifact containing the manifest file
        path: '$(Pipeline.Workspace)'   
 
   - task: KubernetesManifest@0
@@ -24,6 +24,6 @@ steps:
       action: deploy
       kubernetesServiceConnection: 'kube'
       manifests: |
-        $(Pipeline.Workspace)deploymentservice.yaml
+        $(Pipeline.Workspace)deploymentservice.yml
     
     

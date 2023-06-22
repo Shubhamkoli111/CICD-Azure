@@ -25,6 +25,6 @@ steps:
       action: deploy
       kubernetesServiceConnection: 'kube'
       manifests: |
-        $(Pipeline.Workspace)deploymentservice.yml
+        $(Pipeline.Workspace)/deploymentservice.yml
     
     

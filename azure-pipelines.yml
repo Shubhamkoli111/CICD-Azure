@@ -12,11 +12,12 @@ steps:
       command: buildAndPush
       Dockerfile: dockerfile
       containerRegistry: dockerhub
-  - task: DownloadPipelineArtifact@2
-    displayName: 'Download Kubernetes manifest file'
+  - task: CopyFiles@2
+    displayName: 'Copy manifest file'
     inputs:
-       artifact: 'deploymentservice.yml'  # Specify the name of the artifact containing the manifest file
-       path: '$(Pipeline.Workspace)'   
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: 'deploymentservice.yml'  # Specify the name of your manifest file
+      TargetFolder: '$(Pipeline.Workspace)'  
 
   - task: KubernetesManifest@0
     displayName: 'Deploy to Kubernetes'
